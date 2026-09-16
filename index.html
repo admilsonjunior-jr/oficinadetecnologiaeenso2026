@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Oficina Tecnológica 2026: estacionamento automatizado com Arduino e sensores ultrassônicos.">
+  <title>Oficina Tecnológica 2026 | Estacionamento Automatizado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Voltar ao início">
+      <span class="brand-mark">OT</span>
+      <span>Oficina <strong>Tecnológica</strong></span>
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <nav class="nav-links" aria-label="Navegação principal">
+      <a class="active" href="#inicio">Início</a>
+      <a href="#projeto">O projeto</a>
+      <a href="#simulacao">Simulação</a>
+      <a href="#midia">Vídeos</a>
+      <a href="#galeria">Galeria</a>
+    </nav>
+    <a class="year-chip" href="#projeto">2026 <span>↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-grid"></div>
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span class="pulse-dot"></span> Projeto de automação · Arduino</p>
+        <h1>O futuro do<br><em>estacionar</em><br>começa aqui.</h1>
+        <p class="hero-text">Um modelo inteligente que enxerga, decide e organiza. Sensores ultrassônicos, servomotores e LEDs trabalhando juntos para tornar cada vaga visível.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#simulacao">Explorar projeto <span>↘</span></a>
+          <a class="text-link" href="#projeto">Como funciona <span>→</span></a>
+        </div>
+      </div>
+      <div class="hero-visual reveal reveal-delay">
+        <div class="visual-label label-top">SISTEMA ONLINE <span class="status-light"></span></div>
+        <div class="parking-scene" aria-label="Ilustração de um estacionamento automatizado">
+          <div class="road road-main"></div>
+          <div class="road road-side"></div>
+          <div class="parking-lot">
+            <div class="lot-header"><span>LOT A</span><span>06 VAGAS</span></div>
+            <div class="parking-spaces">
+              <div class="space occupied"><span>01</span><div class="mini-car car-blue"></div><i></i></div>
+              <div class="space free"><span>02</span><i></i></div>
+              <div class="space occupied"><span>03</span><div class="mini-car car-coral"></div><i></i></div>
+              <div class="space free"><span>04</span><i></i></div>
+              <div class="space occupied"><span>05</span><div class="mini-car car-yellow"></div><i></i></div>
+              <div class="space free"><span>06</span><i></i></div>
+            </div>
+            <div class="sensor-line"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="gate gate-in"><span>ENTRADA</span><b></b><i></i></div>
+          <div class="gate gate-out"><span>SAÍDA</span><b></b><i></i></div>
+          <div class="moving-car"><div class="car-body"></div><div class="car-window"></div><i></i><i></i></div>
+          <div class="scan-beam"></div>
+        </div>
+        <div class="visual-label label-bottom">DISTÂNCIA <strong>034 cm</strong></div>
+      </div>
+      <div class="scroll-cue">ROLE PARA DESCOBRIR <span>↓</span></div>
+    </section>
+
+    <section class="project-section section-pad" id="projeto">
+      <div class="section-intro reveal">
+        <p class="eyebrow">01 / O projeto</p>
+        <h2>Pequena escala.<br><em>Grande ideia.</em></h2>
+      </div>
+      <div class="project-content">
+        <div class="project-description reveal">
+          <p>O estacionamento automatizado identifica em tempo real quais vagas estão ocupadas ou livres. Ao detectar um veículo, o sensor envia a informação ao Arduino, que aciona os LEDs e controla as cancelas de entrada e saída.</p>
+          <div class="spec-row"><span>Construído com</span><strong>Arduino UNO · HC-SR04 · SG90</strong></div>
+          <div class="spec-row"><span>Objetivo</span><strong>Fluxo simples, visual e seguro</strong></div>
+        </div>
+        <div class="system-cards reveal reveal-delay">
+          <article class="system-card"><span class="card-number">01</span><span class="card-icon">⌁</span><h3>Detectar</h3><p>O sensor ultrassônico mede a distância e identifica a presença do carro.</p></article>
+          <article class="system-card"><span class="card-number">02</span><span class="card-icon">◉</span><h3>Processar</h3><p>O Arduino interpreta os dados e toma a decisão em milissegundos.</p></article>
+          <article class="system-card"><span class="card-number">03</span><span class="card-icon">↗</span><h3>Sinalizar</h3><p>LEDs mostram a disponibilidade e os servos movem as cancelas.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="simulation-section section-pad" id="simulacao">
+      <div class="simulation-heading reveal"><div><p class="eyebrow">02 / Simulação ao vivo</p><h2>Veja o sistema<br><em>em movimento.</em></h2></div><p class="hint">Clique em uma cancela<br>para controlar o fluxo.</p></div>
+      <div class="simulator reveal reveal-delay">
+        <div class="sim-toolbar"><span><i class="status-light"></i> SIMULADOR INTERATIVO</span><span id="clock">00:00:00</span></div>
+        <div class="sim-body">
+          <div class="sim-counter"><span>VAGAS DISPONÍVEIS</span><strong id="free-count">03</strong><small>de 06 vagas</small><div class="progress"><i id="progress-bar"></i></div><button id="reset-sim" class="reset-button">↻ Resetar simulação</button></div>
+          <div class="sim-lot"><div class="sim-lane entrance-lane"><button class="sim-gate-button" id="entry-gate" aria-label="Abrir cancela de entrada"><span>ENTRADA</span><b class="barrier"></b></button><div class="lane-arrow">→</div></div><div class="sim-spaces" id="sim-spaces"></div><div class="sim-lane exit-lane"><div class="lane-arrow">→</div><button class="sim-gate-button" id="exit-gate" aria-label="Abrir cancela de saída"><span>SAÍDA</span><b class="barrier"></b></button></div></div>
+        </div>
+        <div class="sim-footer"><span><i class="legend-dot free-dot"></i> Livre</span><span><i class="legend-dot occupied-dot"></i> Ocupada</span><span class="sim-message" id="sim-message">Sistema pronto para receber veículos.</span></div>
+      </div>
+    </section>
+
+    <section class="media-section section-pad" id="midia">
+      <div class="section-intro reveal"><p class="eyebrow">03 / Em ação</p><h2>Do protótipo<br><em>à realidade.</em></h2></div>
+      <div class="video-grid reveal reveal-delay">
+        <article class="video-card video-feature"><div class="video-placeholder"><span class="play-button">▶</span><span class="video-time">01:24</span></div><div class="video-caption"><span>01</span><h3>O estacionamento funcionando</h3><p>Visão geral do protótipo em operação</p></div></article>
+        <article class="video-card"><div class="video-placeholder placeholder-two"><span class="play-button">▶</span><span class="video-time">00:48</span></div><div class="video-caption"><span>02</span><h3>Por dentro do circuito</h3><p>Arduino, sensores e conexões</p></div></article>
+        <article class="video-card"><div class="video-placeholder placeholder-three"><span class="play-button">▶</span><span class="video-time">00:36</span></div><div class="video-caption"><span>03</span><h3>Como a cancela decide</h3><p>O código por trás do movimento</p></div></article>
+      </div>
+    </section>
+
+    <section class="gallery-section section-pad" id="galeria">
+      <div class="gallery-heading reveal"><div><p class="eyebrow">04 / Galeria</p><h2>Detalhes que<br><em>fazem acontecer.</em></h2></div><p>Uma coleção dos componentes,<br>testes e descobertas do projeto.</p></div>
+      <div class="gallery-grid reveal reveal-delay"><button class="gallery-image image-one" aria-label="Abrir foto do circuito"><span>circuito principal</span></button><button class="gallery-image image-two" aria-label="Abrir foto do sensor"><span>sensor ultrassônico</span></button><button class="gallery-image image-three" aria-label="Abrir foto da cancela"><span>cancela de entrada</span></button><button class="gallery-image image-four" aria-label="Abrir foto dos LEDs"><span>painel de LEDs</span></button></div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="brand"><span class="brand-mark">OT</span><span>Oficina <strong>Tecnológica</strong></span></div><p>Um projeto feito para imaginar o próximo passo.</p><span class="footer-year">© 2026</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
